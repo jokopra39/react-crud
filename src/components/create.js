@@ -1,39 +1,50 @@
-import React, { useState } from 'react';
-import { Button, Checkbox, Form } from 'semantic-ui-react'
-import axios from 'axios';
-import { useHistory } from 'react-router';
+import React, { useState } from "react";
+import { Button, Checkbox, Form } from "semantic-ui-react";
+import axios from "axios";
+import { useHistory } from "react-router";
 
 export default function Create() {
-    let history = useHistory();
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [checkbox, setCheckbox] = useState(false);
-    console.log(checkbox)
-    const postData = () => {
-        axios.post(`https://60fbca4591156a0017b4c8a7.mockapi.io/fakeData`, {
-            firstName,
-            lastName,
-            checkbox
-        }).then(() => {
-            history.push('/read')
-        })
-    }
-    return (
-        <div>
-            <Form className="create-form">
-                <Form.Field>
-                    <label>First Name</label>
-                    <input placeholder='First Name' onChange={(e) => setFirstName(e.target.value)}/>
-                </Form.Field>
-                <Form.Field>
-                    <label>Last Name</label>
-                    <input placeholder='Last Name' onChange={(e) => setLastName(e.target.value)}/>
-                </Form.Field>
-                <Form.Field>
-                    <Checkbox label='I agree to the Terms and Conditions' onChange={(e) => setCheckbox(!checkbox)}/>
-                </Form.Field>
-                <Button onClick={postData} type='submit'>Submit</Button>
-            </Form>
-        </div>
-    )
+  let history = useHistory();
+  const headers = {
+    Authorization: "Bearer 43|DXSFxH0bVL6btmXFZy0j0PsZPgb57s0BWqiTkVpL"
+  };
+  const [nama, setNama] = useState("");
+  const [email, setEmail] = useState("");
+  const postData = () => {
+    axios
+      .post(
+        `http://127.0.0.1:8000/api/mahasiswa`,
+        {
+          nama,
+          email,
+        },
+        {headers : headers}
+      )
+      .then(() => {
+        history.push("/read");
+      });
+  };
+  return (
+    <div>
+      <Form className="create-form">
+        <Form.Field>
+          <label>Nama</label>
+          <input
+            placeholder="Nama"
+            onChange={(e) => setNama(e.target.value)}
+          />
+        </Form.Field>
+        <Form.Field>
+          <label>Email</label>
+          <input
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Form.Field>
+        <Button onClick={postData} type="submit">
+          Submit
+        </Button>
+      </Form>
+    </div>
+  );
 }
