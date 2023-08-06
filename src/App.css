@@ -8,6 +8,21 @@
   flex-direction: column;
 }
 
+.btn-action{
+  border: none;
+  background-color: transparent;
+}
+
+.btn-save{
+  float: right;
+  margin-right: -1px !important;
+}
+
+.btn-back{
+  padding-top: 10px!important;
+  padding-bottom: 10px !important;
+}
+
 .btn-create{
   float: right;
   margin-bottom: 10px !important;
