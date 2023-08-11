@@ -10,11 +10,12 @@ export default function Update() {
     const [id, setID] = useState(null);
     const [nama, setNama] = useState('');
     const [email, setEmail] = useState('');
+    const data = history.location.state.data;
 
     useEffect(() => {
         setID(localStorage.getItem('ID'))
-        setNama(localStorage.getItem('nama'));
-        setEmail(localStorage.getItem('email'));
+        // setNama(localStorage.getItem('nama'));
+        // setEmail(localStorage.getItem('email'));
     }, []);
 
     const back = () => {
@@ -35,11 +36,11 @@ export default function Update() {
             <Form className="create-form">
                 <Form.Field>
                     <label>Nama</label>
-                    <input placeholder='Nama' value={nama} onChange={(e) => setNama(e.target.value)}/>
+                    <input placeholder='Nama' value={data.nama} onChange={(e) => setNama(e.target.value)}/>
                 </Form.Field>
                 <Form.Field>
                     <label>Email</label>
-                    <input placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <input placeholder='Email' value={data.email} onChange={(e) => setEmail(e.target.value)}/>
                 </Form.Field>
                 <Button className="btn-back" type='submit' onClick={back}><FaArrowLeft /></Button>
                 <Button className="btn-save" type='submit' onClick={updateAPIData}>Update</Button>

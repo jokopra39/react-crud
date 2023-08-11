@@ -49,11 +49,11 @@ export default function Read() {
   ];
 
   const setData = (data) => {
-    let { id, nama, email } = data;
-    localStorage.setItem("ID", id);
-    localStorage.setItem("nama", nama);
-    localStorage.setItem("email", email);
-    history.push("/update");
+    // let { id, nama, email } = data;
+    // localStorage.setItem("ID", id);
+    // localStorage.setItem("nama", nama);
+    // localStorage.setItem("email", email);
+    history.push("/update",{data: data});
   };
 
   const getData = () => {
